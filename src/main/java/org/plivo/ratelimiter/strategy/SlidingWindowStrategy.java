@@ -41,7 +41,7 @@ public class SlidingWindowStrategy implements IStrategy {
                     value.reset();
                     if(rateLimitConfig.get(customerId) <= currSize){
                         value.rejectIncr();
-                        throw new RateLimitException("Permissible value : " + rateLimitConfig.get(customerId) +
+                        throw new RateLimitException("RateLimitException ::: Permissible value : " + rateLimitConfig.get(customerId) +
                                 " is less than requested rate of : " + value.getTotalReq());
                     }else{
                         value.serveIncr(System.currentTimeMillis());

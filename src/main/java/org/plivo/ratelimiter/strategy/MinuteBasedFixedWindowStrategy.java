@@ -40,7 +40,7 @@ public class MinuteBasedFixedWindowStrategy implements IStrategy{
                 value = Optional.ofNullable(FixedMinuteValue.fromString(store.get(key))).orElse(new FixedMinuteValue());
                 if(rateLimitConfig.get(customerId) <= value.getServingRequests()){
                     value.rejectIncr();
-                    throw new RateLimitException("Permissible value : " + rateLimitConfig.get(customerId) +
+                    throw new RateLimitException("RateLimitException :: Permissible value : " + rateLimitConfig.get(customerId) +
                             " is less than requested rate of : " + value.getTotalReq());
                 }else{
                     value.serveIncr();
